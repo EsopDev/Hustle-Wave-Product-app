@@ -1,10 +1,14 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Product, Category
 
 
 def product_list(request):
     products = Product.objects.all()
     return render(request, 'index.html', {'products': products})
+
+def product_detail(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    return render(request, 'detail.html', {'product': product})
 
 def create_product(request):
     if request.method == 'POST':
