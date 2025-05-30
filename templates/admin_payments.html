@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-2xl font-bold mb-4">Admin - Payments</h1>
+
+<table class="w-full table-auto border-collapse">
+  <thead>
+    <tr class="bg-gray-200">
+      <th class="px-4 py-2 text-left">User</th>
+      <th class="px-4 py-2 text-left">Product</th>
+      <th class="px-4 py-2 text-left">Amount</th>
+      <th class="px-4 py-2 text-left">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for payment in payments %}
+      <tr class="border-t">
+        <td class="px-4 py-2">{{ payment.user.username }}</td>
+        <td class="px-4 py-2">{{ payment.product.name }}</td>
+        <td class="px-4 py-2">${{ payment.amount }}</td>
+        <td class="px-4 py-2">{{ payment.created_at }}</td>
+      </tr>
+    {% empty %}
+      <tr>
+        <td colspan="4" class="text-center py-4">No payments found.</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

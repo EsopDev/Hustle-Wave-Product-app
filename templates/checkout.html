@@ -1,0 +1,36 @@
+<form method="POST" action="{% url 'confirm_payment' %}" class="max-w-xl mx-auto bg-white p-6 rounded-md shadow-md space-y-6">
+  {% csrf_token %}
+
+  <h2 class="text-xl font-semibold mb-4">Delivery Address</h2>
+
+  <label for="location" class="block text-sm font-medium text-gray-700 mb-1">Enter your delivery location</label>
+  <input
+    type="text"
+    id="location"
+    name="location"
+    placeholder="e.g., 123 Hustle Street, Lagos"
+    required
+    class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+  />
+
+  <div class="border-t pt-4 space-y-2 text-gray-700">
+    <h3 class="text-base">🛒 <strong>Items Total:</strong> ₦{{ total_price }}</h3>
+    <h3 class="text-base">🚚 <strong>Dispatch Fee:</strong> ₦{{ dispatch_fee }}</h3>
+    <h2 class="text-lg font-bold text-gray-800">💵 Final Total: ₦{{ final_total }}</h2>
+  </div>
+
+  {% if messages %}
+    <ul class="text-red-500 text-sm">
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <button
+    type="submit"
+    class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded transition duration-200"
+  >
+    Pay Now
+  </button>
+</form>

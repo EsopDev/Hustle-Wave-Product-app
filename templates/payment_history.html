@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="text-2xl font-bold mb-4">Your Payment History</h2>
+<ul>
+  {% for payment in payments %}
+    <li>
+      {{ payment.product.name }} - ${{ payment.amount }} - {{ payment.status }} on {{ payment.created_at|date:"Y-m-d" }}
+    </li>
+  {% empty %}
+    <li>No payments yet.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
