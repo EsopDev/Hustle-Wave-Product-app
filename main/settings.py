@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-l(obmqrlwbcbt%k$rj8fa!##)536u$hch5)5k^6)-k=sh96mz*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []  # Add your domain names or IPs here when deploying
+ALLOWED_HOSTS = ['*']  # Add your domain names or IPs here when deploying
 
 
 # Application definition
@@ -36,6 +36,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # For serving static files in production
 ]
 
 ROOT_URLCONF = 'main.urls'
